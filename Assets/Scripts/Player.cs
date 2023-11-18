@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public AudioClip powerupSound;
     public AudioClip powerdownSound;
     private bool betterWeapon;
+    public bool shield;
     public GameObject thruster;
 
     // Start is called before the first frame update
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
     {
         playerSpeed = 6f;
         betterWeapon = false;
+        shield = false;
         lives = 3;
         gM = GameObject.Find("GameManager");
     }
@@ -65,10 +67,18 @@ public class Player : MonoBehaviour
 
     public void LoseLife()
     {
-        lives--;
-        //lives -= 1;
-        //lives = lives - 1;
-        gM.GetComponent<GameManager>().LivesChange(lives);
+        if (shield = 0)
+        {
+            lives--;
+            //lives -= 1;
+            //lives = lives - 1;
+            gM.GetComponent<GameManager>().LivesChange(lives);
+        }
+        else
+        {
+            shield == 0;
+            //add code for shield going away
+        }
         if (lives <= 0) 
         {
             //Game Over
