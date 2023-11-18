@@ -67,7 +67,7 @@ public class Player : MonoBehaviour
 
     public void LoseLife()
     {
-        if (shield = 0)
+        if (!shield)
         {
             lives--;
             //lives -= 1;
@@ -76,7 +76,8 @@ public class Player : MonoBehaviour
         }
         else
         {
-            shield == 0;
+            shield = false;
+            gM.GetComponent<GameManager>().PowerupChange("No Powerup");
             //add code for shield going away
         }
         if (lives <= 0) 
@@ -130,7 +131,7 @@ public class Player : MonoBehaviour
                     gM.GetComponent<GameManager>().PowerupChange("Weapon");
                 } else if (tempInt == 3)
                 {
-                    //Shield Powerup
+                    shield = true;
                     gM.GetComponent<GameManager>().PowerupChange("Shield");
                 }
                 break;
